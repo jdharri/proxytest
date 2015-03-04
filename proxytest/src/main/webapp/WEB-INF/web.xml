@@ -26,7 +26,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>proxyservlet</servlet-name>
-        <url-pattern>/maven/*</url-pattern>
+        <url-pattern>/mav/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>gf</servlet-name>

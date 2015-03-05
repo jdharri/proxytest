@@ -9,7 +9,7 @@
         <servlet-class>org.mitre.dsmiley.httpproxy.HttpsProxyServlet</servlet-class>
         <init-param>
             <param-name>targetUri</param-name>
-            <param-value>https://localhost.localdomain:4848/</param-value>
+            <param-value>https://localhost:4848/</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
@@ -23,7 +23,7 @@
         <servlet-class>org.mitre.dsmiley.httpproxy.ProxyServlet</servlet-class>
         <init-param>
             <param-name>targetUri</param-name>
-            <param-value>https://localhost.localdomain:8181/maven</param-value>
+            <param-value>https://localhost:8181/mavenproject1</param-value>
         </init-param>
     </servlet>
     <servlet>
@@ -31,7 +31,7 @@
         <servlet-class>org.mitre.dsmiley.httpproxy.ProxyServlet</servlet-class>
         <init-param>
             <param-name>targetUri</param-name>
-            <param-value>https://localhost.localdomain:4848/</param-value>
+            <param-value>https://localhost:4848/</param-value>
         </init-param>
     </servlet>
     <servlet>
@@ -44,7 +44,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>proxyservlet</servlet-name>
-        <url-pattern>/mav/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>gf</servlet-name>
@@ -76,11 +76,8 @@
         <auth-method>FORM</auth-method>
         <realm-name>file</realm-name>
         <form-login-config>
-            <!-- login page / error page 
-                is it possible to omit these parameters.
-                It would be better to specify the glassfish admin console 
-                login page, rather than a local login page                
-            -->
+            <form-login-page>/index.html</form-login-page>
+            <form-error-page>/index.html</form-error-page>
         </form-login-config>        
     </login-config>
     <security-role>

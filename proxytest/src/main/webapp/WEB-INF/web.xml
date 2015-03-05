@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+   
+    
+    <!-- https servlets -->
+    
+    <servlet>
+        <servlet-name>secureglassfish</servlet-name>
+        <servlet-class>org.mitre.dsmiley.httpproxy.HttpsProxyServlet</servlet-class>
+        <init-param>
+            <param-name>targetUri</param-name>
+            <param-value>https://localhost.localdomain:4848/</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>secureglassfish</servlet-name>
+        <url-pattern>/secureglassfish/*</url-pattern>
+    </servlet-mapping>            
+
+    <!-- http servlets -->
     <servlet>
         <servlet-name>proxyservlet</servlet-name>
         <servlet-class>org.mitre.dsmiley.httpproxy.ProxyServlet</servlet-class>
@@ -16,7 +34,7 @@
             <param-value>https://localhost.localdomain:4848/</param-value>
         </init-param>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>gmail</servlet-name>
         <servlet-class>org.mitre.dsmiley.httpproxy.ProxyServlet</servlet-class>
         <init-param>
@@ -41,4 +59,31 @@
             30
         </session-timeout>
     </session-config>
+    
+    <!-- https configuration -->
+    <security-constraint>
+        <display-name>glassfishAdminConstraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>wrcoll</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admins</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <!-- login page / error page 
+                is it possible to omit these parameters.
+                It would be better to specify the glassfish admin console 
+                login page, rather than a local login page                
+            -->
+        </form-login-config>        
+    </login-config>
+    <security-role>
+        <role-name>admins</role-name>
+    </security-role>
 </web-app>

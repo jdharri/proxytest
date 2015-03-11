@@ -5,40 +5,65 @@
         <servlet-class>org.mitre.dsmiley.httpproxy.ProxyServlet</servlet-class>
         <init-param>
             <param-name>targetUri</param-name>
-            <param-value>https://localhost.localdomain:8181/maven</param-value>
+            <param-value>https://localhost.localdomain:8181/maven/</param-value>
         </init-param>
     </servlet>
     <servlet>
         <servlet-name>gf</servlet-name>
-        <servlet-class>org.mitre.dsmiley.httpproxy.ProxyServlet</servlet-class>
+        <servlet-class>org.geoint.ux.proxytest.HTTPSProxyServlet</servlet-class>
         <init-param>
             <param-name>targetUri</param-name>
             <param-value>https://localhost.localdomain:4848/</param-value>
         </init-param>
     </servlet>
-     <servlet>
-        <servlet-name>gmail</servlet-name>
+    <servlet>
+        <servlet-name>google</servlet-name>
         <servlet-class>org.mitre.dsmiley.httpproxy.ProxyServlet</servlet-class>
+        <init-param>
+            <param-name>targetUri</param-name>
+            <param-value>https://www.google.com/</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>gmail</servlet-name>
+        <servlet-class>org.geoint.ux.proxytest.HTTPSProxyServlet</servlet-class>
         <init-param>
             <param-name>targetUri</param-name>
             <param-value>https://accounts.google.com/</param-value>
         </init-param>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>proxyservlet</servlet-name>
+    <servlet>
+        <servlet-name>HTTPSProxyServlet</servlet-name>
+        <servlet-class>org.geoint.ux.proxytest.HTTPSProxyServlet</servlet-class>
+         <init-param>
+            <param-name>targetUri</param-name>
+            <param-value>https://localhost.localdomain:8181/maven</param-value>
+        </init-param>
+    </servlet>
+<!--    <servlet-mapping>
+        <servlet-name>HTTPSProxyServlet</servlet-name> 
         <url-pattern>/mav/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>gf</servlet-name>
-        <url-pattern>/gf/*</url-pattern>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+<!--    <servlet-mapping>
+        <servlet-name>google</servlet-name>
+        <url-pattern>/google/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>gmail</servlet-name>
         <url-pattern>/gmail/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
+   
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+<!--    <listener>
+        <description>ServletContextListener, ServletContextAttributeListener, HttpSessionListener, HttpSessionAttributeListener, RequestListener, RequestAttributeListener</description>
+        <listener-class>NewServletListener</listener-class>
+    </listener>-->
 </web-app>
